@@ -1,7 +1,15 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  background-color: skyblue;
+}
+
+#cloud{
+  height: 200px;
 }
 
 .home-container{
@@ -9,6 +17,13 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+
+}
+h1{
+  color:rgb(60, 255, 0) ;
+  background-color: transparent;
+  font-family: 'Comic Neue', cursive;
 
 }
 
@@ -19,14 +34,18 @@
   
 }
 
-.circle{
-  width: 1000px;
-  height: 500px;
+.ground{
+  width: 80%;
+  height: 50%;
   background: rgba(0, 243, 45, 0.982);
-  border-radius: 400px / 100px;
-  margin-top: 5rem;
-  padding:1rem;
- 
+  border-radius: 50%;
+  margin-top: 4rem;
+  padding:2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  
 }
 
 #content_wrapper{
@@ -34,4 +53,28 @@
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+.hole{
+  width: 150px;
+  height: 100px;
+  background-color: brown;
+  border-radius: 50%;
+  margin: 5rem;
+  position: relative;
+}
+.img{
+  position: relative;
+  max-width: 100%;
+}
+
+.head{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  text-align: center;
+  background-color:transparent;
+  white-space: nowrap;
 }
