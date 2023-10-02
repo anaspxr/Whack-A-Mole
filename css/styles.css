@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.home-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.play{
+  width: 100px;
+  height: 50px;
+  font-size: 30px;
+  
+}
+
+.circle{
+  width: 1000px;
+  height: 500px;
+  background: rgba(0, 243, 45, 0.982);
+  border-radius: 400px / 100px;
+  margin-top: 5rem;
+  padding:1rem;
+ 
+}
+
+#content_wrapper{
+  color: blue;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
