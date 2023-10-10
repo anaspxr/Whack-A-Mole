@@ -72,3 +72,9 @@ h1{
   width: 100%;
   background-color: rgba(0, 243, 45, 0.982)
 }
+
+.moleImg{
+  width: 100%;
+  background-color: transparent;
+  display: none;
+}
