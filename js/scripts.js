@@ -6,13 +6,25 @@ var holes = document.getElementsByClassName("hole");
 var score = 0;
 var health = 3;
 
-function Restart(){
-  score = 0;
-    health = 3;
-    moleImage[randomNum].style.display = "none";
-    randomNum = Math.floor(Math.random() * 8);
-    moleImage[randomNum].style.display = "block";
+function moleInterval(){
+  score--;
+  scoreDisplay()
+  moleDisplay()
+}
 
+function moleDisplay() {
+  clearTimeout(moleInterval)
+  moleImage[randomNum].style = "none";
+  randomNum = Math.floor(Math.random() * 8);
+  moleImage[randomNum].style.display = "block"
+  setTimeout(moleInterval,5000);
+}
+
+function Restart() {
+  score = 0;
+  health = 3;
+  clearTimeout(moleInterval)
+  moleDisplay();
 }
 
 var randomNum = Math.floor(Math.random() * 8);
@@ -26,23 +38,24 @@ function playClick() {
 }
 function whack(event) {
   var clickedMole = event.target;
-
   if (clickedMole.id == randomNum) {
     score++;
-
-    moleImage[randomNum].style.display = "none";
-    randomNum = Math.floor(Math.random() * 8);
-    moleImage[randomNum].style.display = "block";
-  }
-   else {
+    moleDisplay();
+  } else {
     health--;
-    }
-  document.getElementById("score").innerHTML =("Score:"+score);
-  document.getElementById("health").innerHTML = "Health:"+health;
-  if(health<=0){
-    window.alert("Game over..!!")
+  }
+  scoreDisplay()
+  
+  if (health <= 0) {
+    window.alert("Game over..!! \n Score:" + score + "\n health:0");
     Restart();
+  }
 }
+
+function scoreDisplay(){
+  document.getElementById("score").innerHTML = "Score:" + score;
+  document.getElementById("health").innerHTML = "Health:" + health;
+
 }
 
 playButton.addEventListener("click", playClick);
