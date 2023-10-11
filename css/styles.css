@@ -81,8 +81,7 @@ h1{
 }
 
 .scoreBoard{
-  width: 250px;
-  height: 100px;
+  width: 30%;
   font-size: 40px;
   border-style: solid;
   background: white;
