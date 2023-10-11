@@ -4,33 +4,37 @@ var playButton = document.getElementById("play");
 var holes = document.getElementsByClassName("hole");
 
 var score = 0;
+var highScore = 0;
 var health = 3;
-var moleTimeout=null;
+var randomNum = Math.floor(Math.random() * 8);
+var moleTimeout = null;
 
-function moleInterval(){
+function moleInterval() {
   score--;
-  scoreDisplay()
-  moleDisplay()
-}
-
-function moleDisplay() {
-  console.log(moleTimeout);
-  moleTimeout=null;
-  clearTimeout(moleTimeout)
-  moleImage[randomNum].style = "none";
-  randomNum = Math.floor(Math.random() * 8);
-  moleImage[randomNum].style.display = "block"
-  moleTimeout = setTimeout(moleInterval,2000);
-}
-
-function Restart() {
-  score = 0;
-  health = 3;
-  clearTimeout(moleInterval)
+  scoreDisplay();
   moleDisplay();
 }
 
-var randomNum = Math.floor(Math.random() * 8);
+function timeOut() {
+  if (timeOut !== null) {
+    clearTimeout(moleTimeout);
+  }
+  moleTimeout = setTimeout(moleDisplay, 800);
+}
+
+function moleDisplay() {
+  moleImage[randomNum].style = "none";
+  randomNum = Math.floor(Math.random() * 8);
+  moleImage[randomNum].style.display = "block";
+}
+
+function Restart() {
+  if (score > highScore) highScore = score;
+  score = 0;
+  health = 3;
+  moleDisplay();
+}
+
 function playClick() {
   if (playButton.innerHTML == "Play!!") {
     playButton.innerHTML = "Restart";
@@ -40,6 +44,7 @@ function playClick() {
   }
 }
 function whack(event) {
+  timeOut();
   var clickedMole = event.target;
   if (clickedMole.id == randomNum) {
     score++;
@@ -47,18 +52,18 @@ function whack(event) {
   } else {
     health--;
   }
-  scoreDisplay()
-  
+  scoreDisplay();
+
   if (health <= 0) {
     window.alert("Game over..!! \n Score:" + score + "\n health:0");
     Restart();
   }
 }
 
-function scoreDisplay(){
+function scoreDisplay() {
   document.getElementById("score").innerHTML = "Score:" + score;
   document.getElementById("health").innerHTML = "Health:" + health;
-
+  document.getElementById("highScore").innerHTML = "High score:" + highScore;
 }
 
 playButton.addEventListener("click", playClick);
