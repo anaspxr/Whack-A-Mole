@@ -5,6 +5,7 @@ var holes = document.getElementsByClassName("hole");
 
 var score = 0;
 var health = 3;
+var moleTimeout=null;
 
 function moleInterval(){
   score--;
@@ -13,11 +14,13 @@ function moleInterval(){
 }
 
 function moleDisplay() {
-  clearTimeout(moleInterval)
+  console.log(moleTimeout);
+  moleTimeout=null;
+  clearTimeout(moleTimeout)
   moleImage[randomNum].style = "none";
   randomNum = Math.floor(Math.random() * 8);
   moleImage[randomNum].style.display = "block"
-  setTimeout(moleInterval,5000);
+  moleTimeout = setTimeout(moleInterval,2000);
 }
 
 function Restart() {
