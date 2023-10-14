@@ -62,6 +62,7 @@ function moleDisplay() {
     moleImage[moleNum].style = "none";
     moleNum = 4;
     moleImage[moleNum].style.display = "block";
+    restartCheck=false;
   } else {
     moleImage[moleNum].style = "none";
     moleNum = randomNumMaker(moleNum);
@@ -77,10 +78,14 @@ function moleInterval() {
   scoreDisplay();
   if (health <= 0) {
     clearTimeout(moleTimeout);
-    window.alert("Game over..!! \n Score:" + score + "\n health:0");
+    restart();
+    setTimeout(function() {
+      window.alert("Game over..!! \n Score:" + score + "\n health:0");
     health = 3;
+  },  10);
+    
   }
-  moleDisplay();
+  else moleDisplay();
 }
 
 function timeOut() {
