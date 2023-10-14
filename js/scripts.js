@@ -6,68 +6,103 @@ var holes = document.getElementsByClassName("hole");
 var score = 0;
 var highScore = 0;
 var health = 3;
-var randomNum = Math.floor(Math.random() * 8);
+var moleNum = 4;
 var moleTimeout = null;
+var restartCheck = false;
+
+//event listeners
+playButton.addEventListener("click", playClick);
+for (i = 0; i < holes.length; i++) {
+  holes[i].addEventListener("click", whack);
+}
+
+function randomNumMaker(prev) {
+  //generates a random number
+  //if its the same as the previous one,increment.
+  var randomNum = Math.floor(Math.random() * 8);
+  if (prev === randomNum) {
+    if (prev === 8) {
+      randomNum = 0;
+    } else {
+      randomNum = randomNum + 1;
+    }
+  }
+  return randomNum;
+}
+
+function playClick() {
+  //When clicking the play button
+  //if its the first time (button text is play),a middle mole is displayed
+  //if the button text is restart,the restart function is called
+  if (playButton.innerHTML == "Play!!") {
+    playButton.innerHTML = "Restart";
+    moleImage[moleNum].style.display = "block";
+  } else {
+    restart();
+  }
+}
+
+function whack(event) {
+  //When clicking any holes after starting the game
+  //if click the correct hole,score increment and calls the moleDisplay function to display next mole
+  //else decrement the score
+  var clickedMole = event.target;
+  if (clickedMole.id == moleNum) {
+    score++;
+    moleDisplay();
+  } else {
+    score--;
+  }
+  scoreDisplay();
+}
+
+function moleDisplay() {
+  //hides the current visible mole and reveal next random mole
+  if (restartCheck == true) {
+    moleImage[moleNum].style = "none";
+    moleNum = 4;
+    moleImage[moleNum].style.display = "block";
+  } else {
+    moleImage[moleNum].style = "none";
+    moleNum = randomNumMaker(moleNum);
+    moleImage[moleNum].style.display = "block";
+    timeOut();
+  }
+}
 
 function moleInterval() {
-  score--;
+  //this function is called after a certain time interval
+  //hides the current visible mole after a certain time and reduces health
+  health--;
   scoreDisplay();
+  if (health <= 0) {
+    clearTimeout(moleTimeout);
+    window.alert("Game over..!! \n Score:" + score + "\n health:0");
+    health = 3;
+  }
   moleDisplay();
 }
 
 function timeOut() {
+  //calls the moleInterval function when needed
   if (timeOut !== null) {
     clearTimeout(moleTimeout);
   }
-  moleTimeout = setTimeout(moleDisplay, 800);
+  moleTimeout = setTimeout(moleInterval, 1000);
 }
 
-function moleDisplay() {
-  moleImage[randomNum].style = "none";
-  randomNum = Math.floor(Math.random() * 8);
-  moleImage[randomNum].style.display = "block";
-}
-
-function Restart() {
+function restart() {
+  //checks the high score and resets the score and health to restart
   if (score > highScore) highScore = score;
   score = 0;
   health = 3;
+  clearTimeout(moleTimeout);
+  restartCheck = true;
   moleDisplay();
-}
-
-function playClick() {
-  if (playButton.innerHTML == "Play!!") {
-    playButton.innerHTML = "Restart";
-    moleImage[randomNum].style.display = "block";
-  } else {
-    Restart();
-  }
-}
-function whack(event) {
-  timeOut();
-  var clickedMole = event.target;
-  if (clickedMole.id == randomNum) {
-    score++;
-    moleDisplay();
-  } else {
-    health--;
-  }
-  scoreDisplay();
-
-  if (health <= 0) {
-    window.alert("Game over..!! \n Score:" + score + "\n health:0");
-    Restart();
-  }
 }
 
 function scoreDisplay() {
   document.getElementById("score").innerHTML = "Score:" + score;
   document.getElementById("health").innerHTML = "Health:" + health;
   document.getElementById("highScore").innerHTML = "High score:" + highScore;
-}
-
-playButton.addEventListener("click", playClick);
-
-for (i = 0; i < holes.length; i++) {
-  holes[i].addEventListener("click", whack);
 }
