@@ -86,6 +86,7 @@ function moleInterval() {
     
   }
   else moleDisplay();
+  
 }
 
 function timeOut() {
