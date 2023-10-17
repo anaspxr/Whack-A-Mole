@@ -1,55 +1,60 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap");
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  background-color: skyblue;
-  font-family: 'Comic Neue', cursive;
+  background-color: #87ceeb;
+  font-family: "Comic Neue", cursive;
 }
 
-#cloud{
+#cloud {
   height: 200px;
 }
 
-.home-container{
+.home-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-
 }
-h1{
-  color:rgb(60, 255, 0) ;
+
+h1 {
+  color: rgb(60, 255, 0);
   font-size: 50px;
   -webkit-text-stroke: 1px white;
-  
-
+  background-color: transparent;
 }
 
-.play{
-  width: 100px;
-  height: 50px;
-  font-size: 30px;
-  
+.play {
+  width: 150px;
+  height: 60px;
+  color: brown;
+  -webkit-text-stroke: 0.3px white;
+  font-size: 35px;
+  border-style: none;
+  border-radius: 24px;
+  background: #81caee;
+  box-shadow: 11px 11px 25px #659eba, -11px -11px 25px #9df6ff;
+  margin: 1rem;
+}
+.play:hover {
+  background: rgb(105, 159, 182);
 }
 
-.ground{
+.ground {
   padding: 5rem;
   width: 100%;
-  height: 500px;
+  height: 100%;
   background: rgba(0, 243, 45, 0.982);
   display: flex;
   justify-content: space-around;
   align-items: center;
-  
 }
-.ground2{
+.ground2 {
   width: 400px;
-  height: 400px;
-  background: brown;
+  height: 250px;
+  background: #a52a2a;
   display: flex;
   border-radius: 10%;
   flex-wrap: wrap;
@@ -58,37 +63,48 @@ h1{
   justify-content: center;
 }
 
-.hole{
+.hole {
+  position: relative;
+  display: flex;
   width: 100px;
-  height: 100px;
-  background: rgb(64, 18, 18);
+  height: 40px;
+  background: #401212;
   border-radius: 50%;
   margin: 1rem;
-
+  border-radius: 50%;
+  background: #401212 ;
+  box-shadow: inset 15px 10px 4px #5b1a1a,
+              inset -19px -25px 7px #250a0a;
 }
 
-#content{
+#content {
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: rgba(0, 243, 45, 0.982)
+  background-color: rgba(0, 243, 45, 0.982);
 }
 
-.moleImg{
+.moleImg {
+  top: -3.5rem;
   width: 100%;
   background-color: transparent;
   display: none;
+  position: absolute;
 }
 
-.scoreBoard{
-  width: 30%;
+.scoreBoard {
+  padding: 20px;
+  width: 35%;
   font-size: 40px;
-  border-style: solid;
-  background: white;
-
+  background-color: white;
 }
 
-.scoreBoard p{
-  background: white;
-  
+.scoreBoard p {
+  background: transparent;
+}
+
+.head {
+  width: 500px;
+  display: flex;
+  justify-content: center;
 }

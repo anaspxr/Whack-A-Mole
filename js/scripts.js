@@ -9,6 +9,8 @@ var health = 3;
 var moleNum = 4;
 var moleTimeout = null;
 var restartCheck = false;
+var moleLevel = 1;
+var speed = 2000;
 
 //event listeners
 playButton.addEventListener("click", playClick);
@@ -62,8 +64,9 @@ function moleDisplay() {
     moleImage[moleNum].style = "none";
     moleNum = 4;
     moleImage[moleNum].style.display = "block";
-    restartCheck=false;
+    restartCheck = false;
   } else {
+    level();
     moleImage[moleNum].style = "none";
     moleNum = randomNumMaker(moleNum);
     moleImage[moleNum].style.display = "block";
@@ -78,6 +81,9 @@ function moleInterval() {
   scoreDisplay();
   if (health <= 0) {
     clearTimeout(moleTimeout);
+    setTimeout(function () {
+      window.alert("Game over..!!")
+    }, 10);
     restart();
     setTimeout(function() {
       window.alert("Game over..!! \n Score:" + score + "\n health:0");
@@ -86,7 +92,6 @@ function moleInterval() {
     
   }
   else moleDisplay();
-  
 }
 
 function timeOut() {
@@ -94,7 +99,7 @@ function timeOut() {
   if (timeOut !== null) {
     clearTimeout(moleTimeout);
   }
-  moleTimeout = setTimeout(moleInterval, 1000);
+  moleTimeout = setTimeout(moleInterval, speed);
 }
 
 function restart() {
@@ -102,6 +107,7 @@ function restart() {
   if (score > highScore) highScore = score;
   score = 0;
   health = 3;
+  scoreDisplay();
   clearTimeout(moleTimeout);
   restartCheck = true;
   moleDisplay();
@@ -110,5 +116,32 @@ function restart() {
 function scoreDisplay() {
   document.getElementById("score").innerHTML = "Score:" + score;
   document.getElementById("health").innerHTML = "Health:" + health;
+  document.getElementById("level").innerHTML = "Level:" + moleLevel;
   document.getElementById("highScore").innerHTML = "High score:" + highScore;
+}
+
+function level() {
+  //finding level
+  if (score > 15) moleLevel = 4;
+  else if (score > 10) moleLevel = 3;
+  else if (score > 5) moleLevel = 2;
+  else moleLevel = 1;
+  //increasing speed
+  switch (moleLevel) {
+    case 1:
+      speed = 1500;
+      break;
+    case 2:
+      speed = 1300;
+      break;
+    case 3:
+      speed = 1000;
+      break;
+    case 4:
+      speed = 500;
+      break;
+    default:
+      console.log("default switch error")
+      break;
+  }
 }
