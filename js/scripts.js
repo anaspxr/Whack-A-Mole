@@ -85,7 +85,13 @@ function moleInterval() {
       window.alert("Game over..!!")
     }, 10);
     restart();
-  } else moleDisplay();
+    setTimeout(function() {
+      window.alert("Game over..!! \n Score:" + score + "\n health:0");
+    health = 3;
+  },  10);
+    
+  }
+  else moleDisplay();
 }
 
 function timeOut() {
