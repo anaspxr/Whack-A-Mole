@@ -36,6 +36,7 @@ function playClick() {
   //When clicking the play button
   //if its the first time (button text is play),a middle mole is displayed
   //if the button text is restart,the restart function is called
+  moleImage[moleNum].src="imgs/mole1.png"
   if (playButton.innerHTML == "Play!!") {
     playButton.innerHTML = "Restart";
     moleImage[moleNum].style.display = "block";
@@ -63,12 +64,13 @@ function moleDisplay() {
   if (restartCheck == true) {
     moleImage[moleNum].style = "none";
     moleNum = 4;
+    moleImage[moleNum].src="imgs/mole1.png"
     moleImage[moleNum].style.display = "block";
     restartCheck = false;
   } else {
-    level();
     moleImage[moleNum].style = "none";
     moleNum = randomNumMaker(moleNum);
+    level();
     moleImage[moleNum].style.display = "block";
     timeOut();
   }
@@ -82,16 +84,10 @@ function moleInterval() {
   if (health <= 0) {
     clearTimeout(moleTimeout);
     setTimeout(function () {
-      window.alert("Game over..!!")
+      window.alert("Game over..!!");
     }, 10);
     restart();
-    setTimeout(function() {
-      window.alert("Game over..!! \n Score:" + score + "\n health:0");
-    health = 3;
-  },  10);
-    
-  }
-  else moleDisplay();
+  } else moleDisplay();
 }
 
 function timeOut() {
@@ -130,18 +126,22 @@ function level() {
   switch (moleLevel) {
     case 1:
       speed = 1500;
+      moleImage[moleNum].src="imgs/mole1.png"
       break;
     case 2:
       speed = 1300;
+      moleImage[moleNum].src="imgs/mole2.png"
       break;
     case 3:
       speed = 1000;
+      moleImage[moleNum].src="imgs/mole3.png"
       break;
     case 4:
       speed = 500;
+      moleImage[moleNum].src="imgs/mole4.png"
       break;
     default:
-      console.log("default switch error")
+      console.log("default switch error");
       break;
   }
 }
