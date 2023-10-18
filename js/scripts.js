@@ -3,6 +3,17 @@ var contents = document.getElementById("content_wrapper");
 var playButton = document.getElementById("play");
 var holes = document.getElementsByClassName("hole");
 
+
+//to preload the mole images
+var mole1 = new Image();
+mole1.src = "imgs/mole1.png"
+var mole2 = new Image();
+mole2.src = "imgs/mole2.png"
+var mole3 = new Image();
+mole3.src = "imgs/mole3.png"
+var mole4 = new Image();
+mole4.src = "imgs/mole4.png"
+
 var score = 0;
 var highScore = 0;
 var health = 3;
