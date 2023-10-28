@@ -22,7 +22,7 @@
 h1 {
   color: rgb(255, 255, 255);
   font-size: 50px;
-  -webkit-text-stroke: 1px rgba(74, 216, 248, 0.742);
+  -webkit-text-stroke: 2px rgba(3, 100, 122, 0.571);
   background-color: transparent;
 }
 
@@ -48,8 +48,6 @@ h1 {
   height: 100%;
   background: rgba(58, 227, 89, 0.801);
   display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
 .ground2 {
   width: 400px;
@@ -77,14 +75,14 @@ h1 {
               inset -19px -25px 7px #250a0a;
 }
 
-#content {
-  font-size: 25px;
+.content {
   display: flex;
   justify-content: center;
   width: 100%;
   background-color: transparent;
   flex-wrap: wrap;
   flex-direction: column;
+  align-items: center;
 }
 
 .moleImg {
@@ -99,4 +97,14 @@ h1 {
   width: 500px;
   display: flex;
   justify-content: center;
+}
+
+.scoreBoard{
+ display: flex;
+ justify-content: space-between;
+ max-width: 400px;
+ font-size: 20px;
+}
+.scoreBoard p{
+  margin: 10px;
 }
