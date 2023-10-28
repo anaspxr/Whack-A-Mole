@@ -3,16 +3,23 @@ var contents = document.getElementById("content_wrapper");
 var playButton = document.getElementById("play");
 var holes = document.getElementsByClassName("hole");
 
-
 //to preload the mole images
 var mole1 = new Image();
-mole1.src = "imgs/mole1.png"
+mole1.src = "imgs/mole1.png";
 var mole2 = new Image();
-mole2.src = "imgs/mole2.png"
+mole2.src = "imgs/mole2.png";
 var mole3 = new Image();
-mole3.src = "imgs/mole3.png"
+mole3.src = "imgs/mole3.png";
 var mole4 = new Image();
-mole4.src = "imgs/mole4.png"
+mole4.src = "imgs/mole4.png";
+var mole1hit = new Image();
+mole1hit.src = "imgs/mole1hit.png";
+var mole2hit = new Image();
+mole2hit.src = "imgs/mole2hit.png";
+var mole3hit = new Image();
+mole3hit.src = "imgs/mole3hit.png";
+var mole4hit = new Image();
+mole4hit.src = "imgs/mole4hit.png";
 
 var score = 0;
 var highScore = 0;
@@ -47,7 +54,7 @@ function playClick() {
   //When clicking the play button
   //if its the first time (button text is play),a middle mole is displayed
   //if the button text is restart,the restart function is called
-  moleImage[moleNum].src="imgs/mole1.png"
+  moleImage[moleNum].src = "imgs/mole1.png";
   if (playButton.innerHTML == "Play!!") {
     playButton.innerHTML = "Restart";
     moleImage[moleNum].style.display = "block";
@@ -75,15 +82,20 @@ function moleDisplay() {
   if (restartCheck == true) {
     moleImage[moleNum].style = "none";
     moleNum = 4;
-    moleImage[moleNum].src="imgs/mole1.png"
+    moleImage[moleNum].src = "imgs/mole1.png";
     moleImage[moleNum].style.display = "block";
     restartCheck = false;
   } else {
-    moleImage[moleNum].style = "none";
+    //if the player hit the correct mole,displays a hit mole image and disappears after 300ms
+    let tempNum=moleNum;
+    moleHit();
     moleNum = randomNumMaker(moleNum);
     level();
     moleImage[moleNum].style.display = "block";
     timeOut();
+    setTimeout(()=> {
+      moleImage[tempNum].style = "none";
+    },300);
   }
 }
 
@@ -137,22 +149,29 @@ function level() {
   switch (moleLevel) {
     case 1:
       speed = 1500;
-      moleImage[moleNum].src="imgs/mole1.png"
+      moleImage[moleNum].src = "imgs/mole1.png";
       break;
     case 2:
       speed = 1300;
-      moleImage[moleNum].src="imgs/mole2.png"
+      moleImage[moleNum].src = "imgs/mole2.png";
       break;
     case 3:
       speed = 1000;
-      moleImage[moleNum].src="imgs/mole3.png"
+      moleImage[moleNum].src = "imgs/mole3.png";
       break;
     case 4:
       speed = 500;
-      moleImage[moleNum].src="imgs/mole4.png"
+      moleImage[moleNum].src = "imgs/mole4.png";
       break;
     default:
       console.log("default switch error");
       break;
   }
+}
+
+function moleHit() {
+  if (moleLevel == 4) moleImage[moleNum].src ="imgs/mole4hit.png";
+  else if (moleLevel == 3) moleImage[moleNum].src = "imgs/mole3hit.png";
+  else if (moleLevel == 2) moleImage[moleNum].src ="imgs/mole2hit.png";
+  else moleImage[moleNum].src = "imgs/mole1hit.png";
 }
