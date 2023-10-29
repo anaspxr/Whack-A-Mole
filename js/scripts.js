@@ -29,6 +29,8 @@ var moleTimeout = null;
 var restartCheck = false;
 var moleLevel = 1;
 var speed = 2000;
+var hitFlag = false;
+var tempNum = 4;
 
 //event listeners
 playButton.addEventListener("click", playClick);
@@ -70,6 +72,7 @@ function whack(event) {
   var clickedMole = event.target;
   if (clickedMole.id == moleNum) {
     score++;
+    hitFlag = true 
     moleDisplay();
   } else {
     score--;
@@ -87,15 +90,22 @@ function moleDisplay() {
     restartCheck = false;
   } else {
     //if the player hit the correct mole,displays a hit mole image and disappears after 300ms
-    let tempNum=moleNum;
-    moleHit();
+    tempNum=moleNum;
     moleNum = randomNumMaker(moleNum);
     level();
     moleImage[moleNum].style.display = "block";
     timeOut();
-    setTimeout(()=> {
+    if(hitFlag == true){
+      moleHit();
+      hitFlag=false;
+      setTimeout(()=> {
+        moleImage[tempNum].style = "none";
+      },300);
+    }
+    else{
       moleImage[tempNum].style = "none";
-    },300);
+    }
+    
   }
 }
 
@@ -126,6 +136,7 @@ function restart() {
   if (score > highScore) highScore = score;
   score = 0;
   health = 3;
+  moleLevel = 1;
   scoreDisplay();
   clearTimeout(moleTimeout);
   restartCheck = true;
@@ -170,8 +181,8 @@ function level() {
 }
 
 function moleHit() {
-  if (moleLevel == 4) moleImage[moleNum].src ="imgs/mole4hit.png";
-  else if (moleLevel == 3) moleImage[moleNum].src = "imgs/mole3hit.png";
-  else if (moleLevel == 2) moleImage[moleNum].src ="imgs/mole2hit.png";
-  else moleImage[moleNum].src = "imgs/mole1hit.png";
+  if (moleLevel == 4) moleImage[tempNum].src ="imgs/mole4hit.png";
+  else if (moleLevel == 3) moleImage[tempNum].src = "imgs/mole3hit.png";
+  else if (moleLevel == 2) moleImage[tempNum].src ="imgs/mole2hit.png";
+  else moleImage[tempNum].src = "imgs/mole1hit.png";
 }
