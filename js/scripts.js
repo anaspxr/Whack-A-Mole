@@ -23,7 +23,7 @@ mole4hit.src = "imgs/mole4hit.png";
 
 var score = 0;
 var highScore = 0;
-var health = 3;
+var health = 6;
 var moleNum = 4;
 var moleTimeout = null;
 var restartCheck = false;
