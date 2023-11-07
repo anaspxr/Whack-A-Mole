@@ -3,7 +3,7 @@ var contents = document.getElementById("content_wrapper");
 var playButton = document.getElementById("play");
 var holes = document.getElementsByClassName("hole");
 
-//to preload the mole images
+//to preload the image and audio files
 var mole1 = new Image();
 mole1.src = "imgs/mole1.png";
 var mole2 = new Image();
@@ -20,6 +20,7 @@ var mole3hit = new Image();
 mole3hit.src = "imgs/mole3hit.png";
 var mole4hit = new Image();
 mole4hit.src = "imgs/mole4hit.png";
+var hitSound = new Audio("audio/bonk.mp3")
 
 var score = 0;
 var highScore = 0;
@@ -71,6 +72,8 @@ function whack(event) {
   //else decrement the score
   var clickedMole = event.target;
   if (clickedMole.id == moleNum) {
+    hitSound.currentTime = 0;
+    hitSound.play()
     score++;
     hitFlag = true 
     moleDisplay();
@@ -135,7 +138,7 @@ function restart() {
   //checks the high score and resets the score and health to restart
   if (score > highScore) highScore = score;
   score = 0;
-  health = 3;
+  health = 6;
   moleLevel = 1;
   scoreDisplay();
   clearTimeout(moleTimeout);
