@@ -59,7 +59,7 @@ h1 {
 .ground2 {
   width: 400px;
   height: 250px;
-  background: #a52a2ab9;
+  background: #9c694d;
   display: flex;
   border-radius: 10%;
   flex-wrap: wrap;
@@ -92,7 +92,6 @@ h1 {
 }
 
 .moleImg {
-  top: -3.5rem;
   width: 100%;
   background-color: transparent;
   display: none;
