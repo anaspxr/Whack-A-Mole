@@ -1,7 +1,8 @@
 var moleImage = document.getElementsByClassName("moleImg");
 var contents = document.getElementById("content_wrapper");
 var playButton = document.getElementById("play");
-var holes = document.getElementsByClassName("hole");
+var holes = document.getElementsByClassName("box");
+var playGround = document.getElementById("ground2") 
 
 //to preload the image and audio files
 var mole1 = new Image();
@@ -20,31 +21,35 @@ var mole3hit = new Image();
 mole3hit.src = "imgs/mole3hit.png";
 var mole4hit = new Image();
 mole4hit.src = "imgs/mole4hit.png";
+var hammer = new Image();
+hammer.src = "imgs/hammer.png"
 var hitSound = new Audio("audio/bonk.mp3")
 
 var score = 0;
 var highScore = 0;
 var health = 6;
-var moleNum = 4;
+var moleNum = 0;
 var moleTimeout = null;
 var restartCheck = false;
 var moleLevel = 1;
 var speed = 2000;
 var hitFlag = false;
 var tempNum = 4;
-
+ 
 //event listeners
 playButton.addEventListener("click", playClick);
 for (i = 0; i < holes.length; i++) {
   holes[i].addEventListener("click", whack);
 }
 
+playGround.style.cursor = hammer.src;
+
 function randomNumMaker(prev) {
   //generates a random number
   //if its the same as the previous one,increment.
-  var randomNum = Math.floor(Math.random() * 8);
+  var randomNum = Math.floor(Math.random() * 7);
   if (prev === randomNum) {
-    if (prev === 8) {
+    if (prev === 7) {
       randomNum = 0;
     } else {
       randomNum = randomNum + 1;
@@ -87,7 +92,7 @@ function moleDisplay() {
   //hides the current visible mole and reveal next random mole
   if (restartCheck == true) {
     moleImage[moleNum].style = "none";
-    moleNum = 4;
+    moleNum = 0;
     moleImage[moleNum].src = "imgs/mole1.png";
     moleImage[moleNum].style.display = "block";
     restartCheck = false;
