@@ -15,35 +15,36 @@
   position: relative;
   height: 182px;
 }
-.box .ellipse {
-  top: 59px;
+.box .hole1 {
+  top: 36.5px;
   width: 100%;
   position: absolute;
 }
 .box .moleImg {
   position: absolute;
   width: 100%;
-  top: 10%;
+  top: 50%;
   left: 0;
+  z-index: 0;
   object-fit: cover;
 }
 .box .rectangle {
   position: absolute;
   width:100%;
   height: 88px;
-  top: 45%;
+  top: 44%;
   left: 0;
-  background-color: #9c694d;
+  background-color: rgb(58, 227, 89);
 }
-.box .img {
-  top: 41%;
+/* #9c694d */
+.box .hole2 {
+  top:20%;
   position: absolute;
   width: 100%;
 }
 .ground2 {
     width: 450px;
     height: 400px;
-    background: #9c694d;
     display: flex;
     border-radius: 10%;
     flex-wrap: wrap;

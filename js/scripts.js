@@ -82,8 +82,6 @@ function whack(event) {
     score++;
     hitFlag = true 
     moleDisplay();
-  } else {
-    score--;
   }
   scoreDisplay();
 }

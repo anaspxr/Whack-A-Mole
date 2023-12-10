@@ -1,0 +1,10 @@
+@keyframes jump{
+    from {top: 50%;}
+    to {top: 0%}
+
+}
+
+.moleImg{
+    animation-name: jump;
+    animation-duration: 2s;
+}
