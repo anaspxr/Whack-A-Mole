@@ -1,7 +1,6 @@
 var moleImage = document.getElementsByClassName("moleImg");
 var contents = document.getElementById("content_wrapper");
 var playButton = document.getElementById("play");
-var holes = document.getElementsByClassName("box");
 var playGround = document.getElementById("ground2") 
 
 //to preload the image and audio files
@@ -38,8 +37,8 @@ var tempNum = 4;
  
 //event listeners
 playButton.addEventListener("click", playClick);
-for (i = 0; i < holes.length; i++) {
-  holes[i].addEventListener("click", whack);
+for (i = 0; i < moleImage.length; i++) {
+  moleImage[i].addEventListener("click", whack);
 }
 
 playGround.style.cursor = hammer.src;
@@ -66,12 +65,15 @@ function playClick() {
   if (playButton.innerHTML == "Play!!") {
     playButton.innerHTML = "Restart";
     moleImage[moleNum].style.display = "block";
+    moleImage[moleNum].style.top = "0%";
+    
   } else {
     restart();
   }
 }
 
 function whack(event) {
+  console.log(event.target[i])
   //When clicking any holes after starting the game
   //if click the correct hole,score increment and calls the moleDisplay function to display next mole
   //else decrement the score
@@ -93,6 +95,7 @@ function moleDisplay() {
     moleNum = 0;
     moleImage[moleNum].src = "imgs/mole1.png";
     moleImage[moleNum].style.display = "block";
+    moleImage[moleNum].style.top = "0%";
     restartCheck = false;
   } else {
     //if the player hit the correct mole,displays a hit mole image and disappears after 300ms
@@ -187,8 +190,9 @@ function level() {
 }
 
 function moleHit() {
-  if (moleLevel == 4) moleImage[tempNum].src ="imgs/mole4hit.png";
-  else if (moleLevel == 3) moleImage[tempNum].src = "imgs/mole3hit.png";
-  else if (moleLevel == 2) moleImage[tempNum].src ="imgs/mole2hit.png";
+  if (moleLevel == 4 && score > 15) moleImage[tempNum].src ="imgs/mole4hit.png";
+  else if (moleLevel == 3 && score > 11) moleImage[tempNum].src = "imgs/mole3hit.png";
+  else if (moleLevel == 2 && score>6) moleImage[tempNum].src ="imgs/mole2hit.png";
   else moleImage[tempNum].src = "imgs/mole1hit.png";
 }
+

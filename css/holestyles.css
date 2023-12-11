@@ -1,4 +1,5 @@
 .box {
+  pointer-events: none;
   width: 20%;
   position: relative;
   display: flex;
@@ -21,6 +22,7 @@
   position: absolute;
 }
 .box .moleImg {
+  pointer-events: auto;
   position: absolute;
   width: 100%;
   top: 50%;
