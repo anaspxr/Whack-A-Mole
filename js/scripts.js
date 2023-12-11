@@ -73,7 +73,6 @@ function playClick() {
 }
 
 function whack(event) {
-  console.log(event.target[i])
   //When clicking any holes after starting the game
   //if click the correct hole,score increment and calls the moleDisplay function to display next mole
   //else decrement the score
