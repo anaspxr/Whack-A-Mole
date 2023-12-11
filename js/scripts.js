@@ -22,7 +22,7 @@ var mole4hit = new Image();
 mole4hit.src = "imgs/mole4hit.png";
 var hammer = new Image();
 hammer.src = "imgs/hammer.png"
-var hitSound = new Audio("audio/bonk.mp3")
+var hitSound = new Audio("https://github.com/anaspxr/Whack-A-Mole/raw/main/audio/Bonk.mp3")
 
 var score = 0;
 var highScore = 0;
