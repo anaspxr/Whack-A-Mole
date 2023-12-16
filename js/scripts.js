@@ -1,7 +1,7 @@
 var moleImage = document.getElementsByClassName("moleImg");
 var contents = document.getElementById("content_wrapper");
 var playButton = document.getElementById("play");
-var playGround = document.getElementById("ground2") 
+var playGround = document.getElementById("ground2");
 
 //to preload the image and audio files
 var mole1 = new Image();
@@ -21,8 +21,10 @@ mole3hit.src = "imgs/mole3hit.png";
 var mole4hit = new Image();
 mole4hit.src = "imgs/mole4hit.png";
 var hammer = new Image();
-hammer.src = "imgs/hammer.png"
-var hitSound = new Audio("https://github.com/anaspxr/Whack-A-Mole/raw/main/audio/Bonk.mp3")
+hammer.src = "imgs/hammer.png";
+var hitSound = new Audio(
+  "https://github.com/anaspxr/Whack-A-Mole/raw/main/audio/Bonk.mp3"
+);
 
 var score = 0;
 var highScore = 0;
@@ -34,7 +36,7 @@ var moleLevel = 1;
 var speed = 3000;
 var hitFlag = false;
 var tempNum = 4;
- 
+
 //event listeners
 playButton.addEventListener("click", playClick);
 for (i = 0; i < moleImage.length; i++) {
@@ -66,7 +68,6 @@ function playClick() {
     playButton.innerHTML = "Restart";
     moleImage[moleNum].style.display = "block";
     moleImage[moleNum].style.top = "0%";
-    
   } else {
     restart();
   }
@@ -79,9 +80,9 @@ function whack(event) {
   var clickedMole = event.target;
   if (clickedMole.id == moleNum) {
     hitSound.currentTime = 0;
-    hitSound.play()
+    hitSound.play();
     score++;
-    hitFlag = true 
+    hitFlag = true;
     moleDisplay();
   }
   scoreDisplay();
@@ -98,22 +99,20 @@ function moleDisplay() {
     restartCheck = false;
   } else {
     //if the player hit the correct mole,displays a hit mole image and disappears after 300ms
-    tempNum=moleNum;
+    tempNum = moleNum;
     moleNum = randomNumMaker(moleNum);
     level();
     moleImage[moleNum].style.display = "block";
     timeOut();
-    if(hitFlag == true){
+    if (hitFlag == true) {
       moleHit();
-      hitFlag=false;
-      setTimeout(()=> {
+      hitFlag = false;
+      setTimeout(() => {
         moleImage[tempNum].style = "none";
-      },300);
-    }
-    else{
+      }, 300);
+    } else {
       moleImage[tempNum].style = "none";
     }
-    
   }
 }
 
@@ -179,7 +178,7 @@ function level() {
       moleImage[moleNum].src = "imgs/mole3.png";
       break;
     case 4:
-      speed = 1000;
+      speed = 1100;
       moleImage[moleNum].src = "imgs/mole4.png";
       break;
     default:
@@ -189,9 +188,8 @@ function level() {
 }
 
 function moleHit() {
-  if (score > 16) moleImage[tempNum].src ="imgs/mole4hit.png";
+  if (score > 16) moleImage[tempNum].src = "imgs/mole4hit.png";
   else if (score > 11) moleImage[tempNum].src = "imgs/mole3hit.png";
-  else if (score>6) moleImage[tempNum].src ="imgs/mole2hit.png";
+  else if (score > 6) moleImage[tempNum].src = "imgs/mole2hit.png";
   else moleImage[tempNum].src = "imgs/mole1hit.png";
 }
-

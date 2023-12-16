@@ -97,21 +97,10 @@ h1 {
 .scoreBoard{
  display: flex;
  justify-content: space-between;
- max-width: 400px;
+ max-width: 500px;
  font-size: 20px;
 }
 .scoreBoard p{
   margin: 10px;
 }
 
-@media only screen and (max-width: 420px) {
-  .ground2 {
-    width:100%;
-  }
-  .hole {
-    width:20%;
-  }
-  h1{
-    font-size: 40px;
-  }
-}
