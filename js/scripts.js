@@ -31,7 +31,7 @@ var moleNum = 0;
 var moleTimeout = null;
 var restartCheck = false;
 var moleLevel = 1;
-var speed = 2000;
+var speed = 3000;
 var hitFlag = false;
 var tempNum = 4;
  
@@ -167,19 +167,19 @@ function level() {
   //increasing speed
   switch (moleLevel) {
     case 1:
-      speed = 1500;
+      speed = 3000;
       moleImage[moleNum].src = "imgs/mole1.png";
       break;
     case 2:
-      speed = 1300;
+      speed = 2200;
       moleImage[moleNum].src = "imgs/mole2.png";
       break;
     case 3:
-      speed = 1000;
+      speed = 1800;
       moleImage[moleNum].src = "imgs/mole3.png";
       break;
     case 4:
-      speed = 500;
+      speed = 1000;
       moleImage[moleNum].src = "imgs/mole4.png";
       break;
     default:
@@ -189,9 +189,9 @@ function level() {
 }
 
 function moleHit() {
-  if (moleLevel == 4 && score > 15) moleImage[tempNum].src ="imgs/mole4hit.png";
-  else if (moleLevel == 3 && score > 11) moleImage[tempNum].src = "imgs/mole3hit.png";
-  else if (moleLevel == 2 && score>6) moleImage[tempNum].src ="imgs/mole2hit.png";
+  if (score > 16) moleImage[tempNum].src ="imgs/mole4hit.png";
+  else if (score > 11) moleImage[tempNum].src = "imgs/mole3hit.png";
+  else if (score>6) moleImage[tempNum].src ="imgs/mole2hit.png";
   else moleImage[tempNum].src = "imgs/mole1hit.png";
 }
 
