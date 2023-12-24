@@ -52,12 +52,16 @@ h1 {
 }
 
 .ground {
-  cursor: url('../imgs/hammer.png'), auto;
+  cursor: url('../imgs/hammer.png') 10 35, auto;
   width: 100%;
   height: 100%;
   background: #72cf72;
   display: flex;
   border-radius: 44% 44% 0% 0% / 2% 2% 0% 0%  ;
+}
+
+.ground:active {
+  cursor: url('../imgs/hammerRotate.png'), auto; /* Replace with the path to your second image */
 }
 
 .hole {
@@ -105,4 +109,3 @@ h1 {
 .scoreBoard p{
   margin: 10px;
 }
-

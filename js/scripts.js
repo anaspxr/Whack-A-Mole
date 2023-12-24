@@ -1,7 +1,7 @@
 var moleImage = document.getElementsByClassName("moleImg");
 var contents = document.getElementById("content_wrapper");
 var playButton = document.getElementById("play");
-var playGround = document.getElementById("ground2");
+var ground = document.getElementById('ground');
 
 //to preload the image and audio files
 var mole1 = new Image();
@@ -22,6 +22,8 @@ var mole4hit = new Image();
 mole4hit.src = "imgs/mole4hit.png";
 var hammer = new Image();
 hammer.src = "imgs/hammer.png";
+var hammerRotate = new Image();
+hammer.src = "imgs/hammerRotate.png";
 var hitSound = new Audio(
   "https://github.com/anaspxr/Whack-A-Mole/raw/main/audio/Bonk.mp3"
 );
@@ -42,8 +44,13 @@ playButton.addEventListener("click", playClick);
 for (i = 0; i < moleImage.length; i++) {
   moleImage[i].addEventListener("click", whack);
 }
-
-playGround.style.cursor = hammer.src;
+//event listeners for the hammer cursor when clicking 
+ground.addEventListener('mousedown', function() {
+  ground.classList.add('active');
+});
+ground.addEventListener('mouseup', function() {
+  ground.classList.remove('active');
+});
 
 function randomNumMaker(prev) {
   //generates a random number
