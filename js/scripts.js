@@ -24,9 +24,6 @@ var hammer = new Image();
 hammer.src = "imgs/hammer.png";
 var hammerRotate = new Image();
 hammer.src = "imgs/hammerRotate.png";
-var hitSound = new Audio(
-  "https://github.com/anaspxr/Whack-A-Mole/raw/main/audio/Bonk.mp3"
-);
 
 var score = 0;
 var highScore = 0;
@@ -86,8 +83,6 @@ function whack(event) {
   //else decrement the score
   var clickedMole = event.target;
   if (clickedMole.id == moleNum) {
-    hitSound.currentTime = 0;
-    hitSound.play();
     score++;
     hitFlag = true;
     moleDisplay();
